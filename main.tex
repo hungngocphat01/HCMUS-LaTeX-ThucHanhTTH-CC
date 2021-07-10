@@ -1,0 +1,123 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% University Assignment Title Page 
+% LaTeX Template
+% Version 1.0 (27/12/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% WikiBooks (http://en.wikibooks.org/wiki/LaTeX/Title_Creation)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Bài làm cuối kỳ Thực hành Toán tổ hợp}
+%%%%%%%%%%%%%%%%%%%%%% PACKAGE INCLUSIONS %%%%%%%%%%%%%%%%%%%%%% 
+\documentclass[12pt]{article}
+\usepackage{extsizes}
+\usepackage[T5]{fontenc}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage{csquotes}
+\usepackage[vietnamese,english]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{centernot}
+\usepackage[outputdir=build,cache=false]{minted}
+% Xoá đoạn "[outputdir=build,cache=false]" ở dòng trên nếu compile trên Overleaf
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{listings}
+\usepackage[unicode]{hyperref}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{subfiles}
+\usepackage{wrapfig}
+\usepackage{forest}
+\usetikzlibrary{arrows.meta,
+                chains,
+                positioning,
+                quotes,
+                shapes.geometric}
+
+\usepackage{geometry}
+
+%%%%%%%%%%%%%%%%%%%%%% DOCUMENT FORMATTING %%%%%%%%%%%%%%%%%%%%%% 
+\geometry{
+    a4paper,
+    total={170mm,250mm},
+    left=20mm,
+    top=30mm,
+ }
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+    citecolor=blue
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Bài thi cuối kỳ Thực hành Toán tổ hợp}
+\lhead{Hùng Ngọc Phát -- 1910615}
+\rfoot{Trang \thepage}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.3em}
+\setlength{\headheight}{15pt}
+
+\AtBeginEnvironment{minted}{
+    \renewcommand{\fcolorbox}[4][]{#4}}       
+
+\tikzstyle{arrow} = [thick,->,>=stealth]
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{other_process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30]
+%%%%%%%%%%%%%%%%%%%%%% MACRO DEFINITIONS %%%%%%%%%%%%%%%%%%%%%% 
+\newcommand{\nocontentsline}[3]{}
+\newcommand{\tocless}[2]{\bgroup\let\addcontentsline=\nocontentsline#1{#2}\egroup}
+
+\newcommand{\cd}[1]{\texttt{#1}}
+
+\renewenvironment{figure*}
+{\begin{figure}[H]\center}
+{\end{figure}}
+
+\newcommand{\cdh}[1]{\textcolor{red}{\cd{#1}}}
+
+\renewcommand{\a}[1]{$a_{#1}$}
+\newcommand{\Ra}{\Rightarrow}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\begin{center}
+    \LARGE{\bfseries Bài thi cuối kỳ Thực hành Toán tổ hợp} \\
+    \Large{Học kỳ 2, 2020--2021}\\
+    \large{Sinh viên: Hùng Ngọc Phát (19120615)}\\
+    \large{Lớp 2019CQ/3, Ca 1 sáng thứ 6}\\[1.5cm]
+\end{center}
+
+\subfile{Bai1}
+\subfile{Bai2}
+\subfile{Bai3}
+\subfile{Bai5}
+
+
+
+
+\renewcommand{\bibname}{Tài liệu tham khảo}
+% \nocite{htmt_lvl}
+% \nocite{htmt_thv}
+% \nocite{jbwyatt}
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+\end{document}

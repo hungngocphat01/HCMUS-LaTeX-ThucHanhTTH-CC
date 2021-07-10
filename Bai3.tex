@@ -1,0 +1,38 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+\section{Bài 3}
+\subsection{Câu a}
+Sử dụng Maple, ta có tổng cần tìm là:
+\begin{verbatim}
+> f:=sum(i*(i+1)*(i+2)*(i+3), i=1..n): simplify(f)
+\end{verbatim}
+$$
+\frac{1}{5}n^5 + 2n^4 + 7n^3 + 10n^2 + \frac{24}{5}n
+$$
+
+\subsection{Câu b}
+- Gọi $e_k$ là số các số nguyên $k$ xuất hiện trong một phân hoạch của 10.\\
+- Số phân hoạch của 10 là số nghiệm nguyên của phương trình:
+$$
+e_1 + 2e_2 + 3e_3 + \dots + 10e_{10} = 10
+$$
+- Gọi \a{r} là số phân hoạch của $r$. Hàm sinh cho dãy $\left\{a_r\right\}_{0\le r \le 10}$ là:
+
+\begin{align*}
+G(x) &= (1+x+x^2+...)(1+x^2+x^4+...)...(1+x^{10}+x^{20}+...)\\
+&= \frac{1}{(1-x)(1-x^2)(1-x^3)...(1-x^{10})}
+\end{align*}
+
+- Số phân hoạch của $10$ là hệ số của $x^{10}$ trong hàm sinh $G(x)$.\\
+- Sử dụng Maple, ta dễ dàng tính được hệ số của $x^{10}$:
+\begin{verbatim}
+> g:= 1/product(1-x^i, i=1..10)
+> coeff(series(g, x, 11), x, 10)
+\end{verbatim}
+$$
+42
+$$
+
+Vậy số phân hoạch của 10 là 42.
+
+\end{document}

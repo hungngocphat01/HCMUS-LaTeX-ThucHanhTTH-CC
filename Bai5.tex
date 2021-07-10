@@ -1,0 +1,56 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+\section{Bài 5}
+\newcommand{\U}{$\mathcal U$ }
+\newcommand{\A}[1]{$A_{#1}$}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\ssum}[3]{\sum_{#1}^{#2}{#3}}
+
+- Gọi \U là tập các số nguyên dương $q$ sao cho $q \le n$.\\
+- Ta phân tích $n$ thành tích các thừa số nguyên tố. Giả sử
+$$
+n = p_1^{k_1} \times p_2^{k_2} \times p_3^{k_3} \times \dots \times p_r^{k_r} 
+$$
+
+- Gọi \A 1, \A 2, \dots, \A r lần lượt là tập các số nguyên trong \U  và chia hết cho $p_1$, $p_2$, ..., $p_r$.\\
+- Nếu $q$ nguyên tố cùng nhau với $n$ thì $q$ phải không chia hết cho $p_1$, $p_2$, ..., $p_r$.\\
+- Theo nguyên lý bù trừ, số số nguyên $q$ thoả các điều kiện trên là: $p(n) = \left|\bar{A_1}\bar{A_2}\bar{A_3}\cdots\bar{A_r}\right|$\\
+- Ta có: $\abs{\mathcal U} = n$.\\
+$$
+\abs{A_1}=\frac{n}{p_1},\ \abs{A_2}=\frac{n}{p_2},\ \dots, \abs{A_r}=\frac{n}{p_r} 
+$$
+
+$$
+\abs{A_1A_2}=\frac{n}{p_1p_2},\ \dots,\ \abs{A_iA_j}=\frac{n}{p_ip_j} (1 \le i < j \le r)
+$$
+
+$$
+\dots
+$$
+
+$$
+\abs{A_1A_2A_3 \dots A_r}=\frac{n}{p_1p_2p_3\dots p_r}
+$$
+
+- Số số nguyên dương thoả mãn yêu cầu đề bài là:
+\begin{align*}
+p(n) &= \abs{A_1A_2A_3 \dots A_r}=\abs{\mathcal U} + \sum^{r}_{k=1}(-1)^kS_k \\ 
+&= n - S_1 + S_2 - S_3 + \dots + (-1)^rS_r \\
+&= n - \ssum{k=1}{r}{\frac{n}{p_k}} + \ssum{k,t=1}{r}{\frac{n}{p_kp_t}} + \dots + (-1)^r\frac{n}{p_1p_2p_3\dots p_r} \\
+&= n \left[ 1 - \ssum{k=1}{r}{\frac{1}{p_k}} + \ssum{k,t=1}{r}{\frac{1}{p_kp_t}} + \dots + (-1)^r\frac{1}{p_1p_2p_3\dots p_r} \right]\\
+&= n\left(1-\frac{1}{p_1}\right)\left(1-\frac{1}{p_2}\right)\left(1-\frac{1}{p_3}\right)\dots\left(1-\frac{1}{p_r}\right)
+\end{align*}
+- Vậy: 
+$$
+p(n) = \prod_{j=1}^{r}\left(1-\frac{1}{p_j}\right)
+$$
+Với $p_j$ là các thừa số nhận được khi ta phân tích $n$ thành các thừa số nguyên tố.
+
+\paragraph*{Áp dụng}:
+Ta phân tích $100=2^2\times 5^2$.
+$$
+\Rightarrow p(100)=100(1-1/2)(1-1/5)=40
+$$
+
+\end{document}

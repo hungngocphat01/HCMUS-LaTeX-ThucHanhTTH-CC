@@ -1,0 +1,95 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+\section{Bài 2}
+\subsection{Câu a}
+\paragraph*{i.}
+Gọi \a{n} là số tiền thu được sau $n$ năm.\\
+- Vì sau mỗi năm, số tiền tăng lên 4\% nên so với năm trước, ta có:
+\begin{align*}
+a_n &= (1+4\%)a_{n-1}\\
+&=1,04\ a_{n-1}
+\end{align*}
+- Do ban đầu ta đã gửi 1000\$ vào sổ nên $a_0=1000$.\\
+- Sử dụng Maple, ta tính được:
+$$
+a_n = 1000\times 1,04^n
+$$
+
+\paragraph*{ii.}
+Tương tự, do số tiền tăng 4\% sau mỗi năm, và cuối mỗi năm ta lại gửi thêm 100\$ vào tài khoản, nên ta có hệ thức đệ quy:
+$$
+a_n = 1,04\times a_{n-1}+100
+$$
+- \textbf{Tìm điều kiện đầu:} do cuối năm đầu tiên ta mới gửi tiền vào, nên sau 1 năm mới có 100\$ trong tài khoản, nên: $a_0=0, \quad a_1=100$.\\
+- Sử dụng Maple giải, ta có:
+$$
+a_n = 2500 \times 1,04^n - 2500
+$$
+
+\subsection{Câu b}
+
+\subsection{Câu c}
+- Gọi \a{n} là số chuỗi tam phân có độ dài $n$ mà không xuất hiện ``012''.\\
+- Ta xét 3 trường hợp sau:
+
+\paragraph{TH1} 
+Chuỗi bắt đầu bằng ``1''.\\
+
+\begin{wrapfigure}{L}{0.25\textwidth}
+    \begin{tikzpicture}
+        \node[draw] (1) {1};
+        \node[draw,right=-0.5pt of 1, minimum width = 3cm] {n-1};
+    \end{tikzpicture}    
+\end{wrapfigure}
+
+Số chuỗi thoả yêu cầu đề bài là số chuỗi tam phâm không có ``012'' tạo bởi $n-1$ kí tự còn lại. \\
+Vậy trường hợp này ta có \a{n-1} (chuỗi).\\
+
+\paragraph{TH2} 
+Chuỗi bắt đầu bằng ``2''.\\
+
+\begin{tikzpicture}
+    \node[draw] (1) {2};
+    \node[draw,right=-0.5pt of 1, minimum width = 3cm] {n-1};
+\end{tikzpicture}    
+
+Lý luận tương tự, trường hợp này ta có \a{n-1} (chuỗi).\\
+
+\paragraph{TH3} 
+Chuỗi bắt đầu bằng ``0''.\\
+\subparagraph{Trường hợp tổng quát}
+\begin{tikzpicture}
+    \node[draw] (1) {0};
+    \node[draw,right=-0.5pt of 1, minimum width = 3cm] {n-1};
+\end{tikzpicture}    
+
+Lý luận tương tự, trường hợp này ta cũng có \a{n-1} (chuỗi).
+
+\subparagraph{Tuy nhiên} ta thấy được sẽ có 1 trường hợp chuỗi bắt đầu bằng ``012'' nên phải loại nó ra.
+\begin{tikzpicture}
+    \node[draw] (1) {012};
+    \node[draw,right=-0.5pt of 1, minimum width = 3cm] {n-3};
+\end{tikzpicture}  
+Trường hợp này có \a{n-3} chuỗi.
+
+\paragraph{Vậy tổng kết lại} theo nguyên lý cộng, ta sẽ có
+\begin{align*}
+a_n &= a_{n-1} + a_{n-1} + a_{n-1} - a_{n-3}\\
+&= 3a_{n-1} - a_{n-3}
+\end{align*}
+
+\paragraph*{Tìm điều kiện đầu:}
+\begin{itemize}
+    \item $a_1 = 3^1$ vì có 1 vị trí, mỗi vị trí có 3 cách chọn.
+    \item $a_2 = 3^2 = 9$ vì có 2 vị trí, mỗi vị trí có 3 cách chọn.
+    \item $a_3 = 3^3-1 = 26$ vì có 3 vị trí, mỗi vị trí có 3 cách chọn. Tuy nhiên, có một trường hợp chuỗi nhận được sẽ là ``012'' nên ta phải trừ nó đi.
+\end{itemize}
+Mặt khác, $a_3 = 3a_2 - a_0 \Leftrightarrow a_0 = 3a_2 - a_3 = 1$.
+
+Vậy quan hệ đệ quy cần tìm là:
+\begin{align*}
+a_n &= 3a_{n-1} - a_{n-3} \\
+a_0 &= 1,\ a_1 = 3,\ a_2 = 9
+\end{align*}
+
+\end{document}
