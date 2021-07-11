@@ -1,0 +1,119 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+\newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
+\newcommand{\e}{\equiv}
+\newcommand{\td}{\Leftrightarrow}
+
+\section{Bài 11}
+- Gọi $x$ là tổng số sinh viên trên sân trường.\\
+- Từ giả thiết bài toán, $x$ là nghiệm của hệ phương trình đồng dư sau:
+\[
+    \begin{cases} \tag{I}
+        x \e 0 \Mod{5} \\
+        x \e 4 \Mod{7} \\
+        x \e 3 \Mod{11} \\
+    \end{cases}
+\]
+
+Ta xét hệ gồm 2 phương trình sau:
+\begin{align*}
+\begin{cases} \tag{II}
+        x \e 4 \Mod{7} \\
+        x \e 3 \Mod{11} \\
+\end{cases} 
+\end{align*}
+
+$$
+\begin{aligned}
+\text{Ta có (II)} &\td 
+\left\{\begin{aligned}
+    x &= 4 + 7t \\
+    x &\e 3 \Mod{11} \\
+\end{aligned}\right.\\
+&\td 4+7t \e 3\Mod{11} \\
+&\td 7t \e (-1)\Mod{11}
+\end{aligned}
+$$
+
+Do $\varphi(11)=10$ và $\left(7, 11\right) = 1\ |\ (-1)$ nên
+$$
+\begin{aligned}
+& 7^{10} \e 1\Mod{11}\\
+\Ra&\ 7\times 7^9 \times (-1) \e (-1)\Mod{11} \\
+\Ra&\ t \e (-7^9)\Mod{11} \\
+\Ra&\ t \e 3\Mod{11} \quad  \text{(do $-7^9$ mod $11$ = 3)}\\
+\Ra&\ t = 3 + 11u\\\\
+\text{Lại có}&\ x = 4+7t \\ 
+\Ra&\ x = 4+7(3+11u) = 25+77u\\
+\Ra&\ x \e 25\Mod{77}
+\end{aligned}
+$$
+
+Vậy (II) $\td x \e 25\Mod{77}$\\
+Thay kết quả trên vào (I), ta được:
+\[
+\text{(I)} \td 
+    \left\{\begin{aligned}
+        x &\e 25\Mod{77} \\
+        x &\e 0 \Mod{5}
+    \end{aligned}\right.
+\]
+
+Hệ phương trình trên tương đương với:
+$$
+\begin{aligned}
+& \left\{\begin{aligned}
+    x &= 5t \\
+    x &\e 25 \Mod{77} \\
+\end{aligned}\right.\\
+&\td 5t \e 25\Mod{77} \\
+\end{aligned}
+$$
+
+Do $\varphi(77)=60$ và $\left(77, 5\right) = 1\ |\ 25$ nên
+$$
+\begin{aligned}
+& 5^{60} \e 1\Mod{77}\\
+\Ra&\ 5\times 5^{59} \times 25 \e 25\Mod{11} \\
+\Ra&\ t \e (5^{59} \times 25)\Mod{77} \\
+\Ra&\ t \e 5\Mod{77} \quad  \text{(do $(5^{59} \times 25)$ mod $77$ = 5)}\\
+\Ra&\ t = 5 + 77u\\\\
+\text{Lại có}&\ x = 5t \\ 
+\Ra&\ x = 5(5+77u) = 25+385u\\
+\Ra&\ x \e385\Mod{25}\\
+\end{aligned}
+$$
+
+Vậy nghiệm của hệ phương trình đồng dư (I) là:
+$$
+\begin{aligned}
+&x \e385\Mod{25}\\
+\text{Hay }& x = 25+385u \ \text{($u\in\mathbb{Z}$)} \quad (*) 
+\end{aligned}
+$$
+
+Do khuôn viên sân trường rộng $100m \times 100m$ và được chia thành nhiều ô $20m \times 20m$ nên số lượng ô của cả sân là:
+$$
+\frac{100}{20} \times \frac{100}{20} = 25 \text{ (ô)}
+$$
+- Gọi $n$ là số sinh viên trong 1 ô $\Ra x=25n$.\\
+- Theo giả thiết:
+$$
+\begin{aligned}
+& 490 \le n \le 500\\
+\td&\ 12250 \le 25n = x \le 12500\\
+\td&\ 12250 \le 25+385u \le 12500 \quad \text{(từ (*))}\\
+\td&\ 31,7 \le u \le 32,4\\
+\end{aligned}
+$$
+- Do $u\in\mathbb{Z}$ nên ta có $u=32$.\\
+- Thay giá trị trên vào (*), ta được: 
+$$
+x = 10+15\times32 = 12345
+$$
+- Vậy trên sân trường có 12345 sinh viên (số đẹp quá thầy \cd{:v}).
+
+
+
+\end{document}
