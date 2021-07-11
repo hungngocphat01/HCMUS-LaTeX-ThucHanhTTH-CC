@@ -35,7 +35,7 @@ $$
 
 - Số số nguyên dương thoả mãn yêu cầu đề bài là:
 \begin{align*}
-p(n) &= \abs{A_1A_2A_3 \dots A_r}=\abs{\mathcal U} + \sum^{r}_{k=1}(-1)^kS_k \\ 
+p(n) &= \abs{\overline{A_1A_2A_3 \dots A_r}}=\abs{\mathcal U} + \sum^{r}_{k=1}(-1)^kS_k \\ 
 &= n - S_1 + S_2 - S_3 + \dots + (-1)^rS_r \\
 &= n - \ssum{k=1}{r}{\frac{n}{p_k}} + \ssum{k,t=1}{r}{\frac{n}{p_kp_t}} + \dots + (-1)^r\frac{n}{p_1p_2p_3\dots p_r} \\
 &= n \left[ 1 - \ssum{k=1}{r}{\frac{1}{p_k}} + \ssum{k,t=1}{r}{\frac{1}{p_kp_t}} + \dots + (-1)^r\frac{1}{p_1p_2p_3\dots p_r} \right]\\
