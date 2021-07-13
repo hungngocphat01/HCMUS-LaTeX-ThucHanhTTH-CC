@@ -27,6 +27,13 @@ a_n = 2500 \times 1,04^n - 2500
 $$
 
 \subsection{Câu b}
+- Gọi $a_n$ là số cách chia $n\$$ theo các tờ tiền có mệnh giá 1, 5, 10 \$. \\
+- Giả sử lần đầu tiên chia ta đã bóc tờ 1\$, thì số cách chia $n\$$ ban đầu chính là số cách chia $(n-1)\$$ còn lại \Ra có \a{n-1} cách. \\
+- Tương tự, nếu lần đầu tiên ta đã bóc tờ $5\$$ hoặc $10\$$ thì số cách chia $n\$$ chính là số cách chia $(n-5)\$$ hoặc $(n-10)\$$ còn lại, lần lượt bằng \a{n-5} và \a{n-10}.\\
+- Vậy, tổng số cách chọn là:
+$$
+\a{n}=\a{n-1}+\a{n-5}+\a{n-10}
+$$
 
 \subsection{Câu c}
 - Gọi \a{n} là số chuỗi tam phân có độ dài $n$ mà không xuất hiện ``012''.\\
@@ -65,7 +72,7 @@ Chuỗi bắt đầu bằng ``0''.\\
 
 Lý luận tương tự, trường hợp này ta cũng có \a{n-1} (chuỗi).
 
-\subparagraph{Tuy nhiên} ta thấy được sẽ có 1 trường hợp chuỗi bắt đầu bằng ``012'' nên phải loại nó ra.
+\subparagraph{Tuy nhiên} ta thấy được sẽ có các trường hợp chuỗi bắt đầu bằng ``012'' nên phải loại nó ra.
 \begin{tikzpicture}
     \node[draw] (1) {012};
     \node[draw,right=-0.5pt of 1, minimum width = 3cm] {n-3};
