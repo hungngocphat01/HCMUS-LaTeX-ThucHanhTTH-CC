@@ -42,7 +42,7 @@ $$
 
 Như vậy, ta có thể rút ra thuật toán cho bài toán này là (\textit{hiện tại ta chưa xét các ``vũng nước''}):
 \begin{itemize}
-    \item Bắt đầu tại ô $(0, 0)$. Lần lượt đi từ trái qua phải, từ dưới lên trên và cập nhật giá trị cho các ô đã đi qua theo công thức đệ quy:
+    \item Bắt đầu tại ô $(0, 0)$. Lần lượt đi từ trái qua phải, từ dưới lên trên và cập nhật giá trị cho các ô đã đi qua theo công thức:
     $$
     a(i,j) = \begin{cases}
         1 &, (i, j) = (0, 0) \\
@@ -73,7 +73,7 @@ Gọi \s là tập hợp những điểm trên hệ trục toạ độ bị ``ch
 Ta dễ dàng nhận thấy ở những ô chìm trong vũng nước thì không có cách nào để đi đến đó, nên $a(i,j)=0$ nếu $(i,j) \in \s$.\par 
 Thuật toán cho trường hợp này tương tự trường hợp trên, chỉ có điều lần này ta sẽ xét thêm các ô đó có nằm trong vũng nước hay không. Cụ thể như sau:
 \begin{itemize}
-    \item Bắt đầu tại ô $(0, 0)$. Lần lượt đi từ trái qua phải, từ dưới lên trên và cập nhật giá trị cho các ô đã đi qua theo công thức đệ quy:
+    \item Bắt đầu tại ô $(0, 0)$. Lần lượt đi từ trái qua phải, từ dưới lên trên và cập nhật giá trị cho các ô đã đi qua theo công thức:
     $$
     a(i,j) = \begin{cases}
         1 &, (i, j) = (0, 0) \\
