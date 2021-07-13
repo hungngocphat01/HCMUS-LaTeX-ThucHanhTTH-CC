@@ -1,0 +1,164 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+\section{Bài 10}
+\subsection{Câu a}
+Giả sử ta gọi bàn cờ có kích thước $n\times m$ đã cho là $B$.
+\newcommand{\empt}{\hphantom{1pt}}
+
+\begin{figure}[H]
+    \newcommand{\0}{\textcolor{red}{0}}
+    \centering
+    \begin{tikzpicture}
+        \matrix[matrix of nodes,nodes={draw=gray, anchor=center, minimum size=1cm}, column sep=-\pgflinewidth, row sep=-\pgflinewidth] (A) {
+            \empt & \empt & \empt & X \\ 
+            \empt & \empt & \empt & \empt \\
+            \empt & \empt & \empt & \empt \\
+            \empt & \empt & \empt & \empt \\
+            \empt & \empt & \empt & \empt \\};
+        
+            \draw[latex-latex] ([yshift=-0.5cm]A.south west) -- ([yshift=-0.5cm]A.south east) node[midway,fill=white] {m};
+
+            \draw[latex-latex] ([xshift=-0.5cm]A.south west) -- ([xshift=-0.5cm]A.north west) node[midway,fill=white] {n};
+        \end{tikzpicture}
+        \caption*{(B)}
+\end{figure}
+
+Giả sử ta bỏ đi góc trên cùng bên phải. Khi đó hàng đầu tiên của bàn cờ còn lại $m-1$ ô. Ta gọi $B'$ là bàn cờ tạo thành từ việc bỏ đi hàng và cột chứa ô đó và $B_1$ là bàn cờ tạo thành từ việc bỏ đi ô đó, ta có:
+
+\begin{figure}[H]
+    \newcommand{\0}{\textcolor{red}{0}}
+    \centering
+    \begin{minipage}{0.49\textwidth}
+        \centering
+        \begin{tikzpicture}
+        \matrix[matrix of nodes,nodes={draw=gray, anchor=center, minimum size=1cm}, column sep=-\pgflinewidth, row sep=-\pgflinewidth] (A) {
+            \empt & \empt & X \\ 
+            \empt & \empt & \empt & \empt \\
+            \empt & \empt & \empt & \empt \\
+            \empt & \empt & \empt & \empt \\
+            \empt & \empt & \empt & \empt \\};
+        
+            \draw[latex-latex] ([yshift=-0.5cm]A.south west) -- ([yshift=-0.5cm]A.south east) node[midway,fill=white] {m};
+            \draw[latex-latex] ([xshift=-0.5cm]A.south west) -- ([xshift=-0.5cm]A.north west) node[midway,fill=white] {n};
+        \end{tikzpicture} \\
+        $(B_1)$
+    \end{minipage}
+    \begin{minipage}{0.49\textwidth}
+        \centering
+        \begin{tikzpicture}
+        \matrix[matrix of nodes,nodes={draw=gray, anchor=center, minimum size=1cm}, column sep=-\pgflinewidth, row sep=-\pgflinewidth] (A) {
+            \empt & \empt & \empt & \\
+            \empt & \empt & \empt & \\
+            \empt & \empt & \empt & \\
+            \empt & \empt & \empt & \\};
+        
+            \draw[latex-latex] ([yshift=-0.5cm]A.south west) -- ([yshift=-0.5cm]A.south east) node[midway,fill=white] {m-1};
+            \draw[latex-latex] ([xshift=-0.5cm]A.south west) -- ([xshift=-0.5cm]A.north west) node[midway,fill=white] {n-1};
+        \end{tikzpicture} \\
+        $(B')$
+    \end{minipage}
+
+
+\end{figure}
+
+\begin{equation*}
+    R(B, x) = xR(B', x) + R(B_1) \tag{1}
+\end{equation*}
+\newpage
+Tiếp tục xét $B_1$:
+Giả sử ta tiếp tục bỏ đi ô được đánh dấu ở hình trên, khi đó hàng đầu tiên của $(B_1)$ còn lại $m-2$ ô, gọi $(B_1')$ là bàn cờ thu được khi bỏ đi cả hàng và cột của ô đó và $(B_2)$ là bàn cờ thu được khi bỏ đi ô đó, ta sẽ thu được:
+
+\begin{figure}[H]
+    \newcommand{\0}{\textcolor{red}{0}}
+    \centering
+    \begin{minipage}{0.49\textwidth}
+        \centering
+        \begin{tikzpicture}
+        \matrix[matrix of nodes,nodes={draw=gray, anchor=center, minimum size=1cm}, column sep=-\pgflinewidth, row sep=-\pgflinewidth] (A) {
+            \empt & \empt \\ 
+            \empt & \empt & \empt & \empt \\
+            \empt & \empt & \empt & \empt \\
+            \empt & \empt & \empt & \empt \\
+            \empt & \empt & \empt & \empt \\};
+        
+            \draw[latex-latex] ([yshift=-0.5cm]A.south west) -- ([yshift=-0.5cm]A.south east) node[midway,fill=white] {m};
+            \draw[latex-latex] ([xshift=-0.5cm]A.south west) -- ([xshift=-0.5cm]A.north west) node[midway,fill=white] {n};
+        \end{tikzpicture} \\
+        $(B_2)$
+    \end{minipage}
+    \begin{minipage}{0.49\textwidth}
+        \centering
+        \begin{tikzpicture}
+        \matrix[matrix of nodes,nodes={draw=gray, anchor=center, minimum size=1cm}, column sep=-\pgflinewidth, row sep=-\pgflinewidth] (A) {
+            \empt & \empt & \empt & \\
+            \empt & \empt & \empt & \\
+            \empt & \empt & \empt & \\
+            \empt & \empt & \empt & \\};
+        
+            \draw[latex-latex] ([yshift=-0.5cm]A.south west) -- ([yshift=-0.5cm]A.south east) node[midway,fill=white] {m-1};
+            \draw[latex-latex] ([xshift=-0.5cm]A.south west) -- ([xshift=-0.5cm]A.north west) node[midway,fill=white] {n-1};
+        \end{tikzpicture} \\
+        $(B_1') \equiv (B')$
+    \end{minipage}
+\end{figure}
+
+\begin{equation*}
+\begin{aligned}
+R(B_1, x) &= xR(B_1', x) + R(B_2,x) \\
+&=xR(B', x) + R(B_2,x)
+\end{aligned}
+\tag{2}
+\end{equation*}
+
+Thay (2) vào (1), ta được:
+
+\begin{equation*}
+R(B,x) = R(B', x) + R(B', x) + R(B_2, x)
+\end{equation*}
+
+Tiếp tục xét bàn cờ $(B_2)$ và lại bỏ đi 1 ô ở hàng đầu tiên, ta thu được bàn cờ $(B_2') = (B')$ và $(B_3)$. Lặp lại bước trên cho mỗi $(B_{i+1})$ sinh ra từ việc bỏ 1 ô khỏi bàn cờ $(B_i)$ theo quy tắc trên cho đến khi hàng đầu tiên không còn ô nào, ta thu được biểu thức sau:
+
+\begin{figure}[H]
+    \newcommand{\0}{\textcolor{red}{0}}
+    \centering
+    \begin{minipage}{0.49\textwidth}
+        \centering
+        \begin{tikzpicture}
+        \matrix[matrix of nodes,nodes={draw=gray, anchor=center, minimum size=1cm}, column sep=-\pgflinewidth, row sep=-\pgflinewidth] (A) {
+            \empt & \empt & \empt & \empt \\
+            \empt & \empt & \empt & \empt \\
+            \empt & \empt & \empt & \empt \\
+            \empt & \empt & \empt & \empt \\};
+        
+            \draw[latex-latex] ([yshift=-0.5cm]A.south west) -- ([yshift=-0.5cm]A.south east) node[midway,fill=white] {m};
+            \draw[latex-latex] ([xshift=-0.5cm]A.south west) -- ([xshift=-0.5cm]A.north west) node[midway,fill=white] {n-1};
+        \end{tikzpicture} \\
+        $(B_m)$
+    \end{minipage}
+    \begin{minipage}{0.49\textwidth}
+        \centering
+        \begin{tikzpicture}
+        \matrix[matrix of nodes,nodes={draw=gray, anchor=center, minimum size=1cm}, column sep=-\pgflinewidth, row sep=-\pgflinewidth] (A) {
+            \empt & \empt & \empt & \\
+            \empt & \empt & \empt & \\
+            \empt & \empt & \empt & \\
+            \empt & \empt & \empt & \\};
+        
+            \draw[latex-latex] ([yshift=-0.5cm]A.south west) -- ([yshift=-0.5cm]A.south east) node[midway,fill=white] {m-1};
+            \draw[latex-latex] ([xshift=-0.5cm]A.south west) -- ([xshift=-0.5cm]A.north west) node[midway,fill=white] {n-1};
+        \end{tikzpicture} \\
+        $(B_m') \equiv (B')$
+    \end{minipage}
+\end{figure}
+
+\begin{equation*}
+    R(B, x) = mxR(B', x) + R(B_m,x) \tag{*}
+\end{equation*}
+
+Theo giả thiết của đề bài, $R(B, x) \equiv R_{n,m}$; $R(B',x) \equiv R_{n-1,m-1}$ và $R(B_m,x) \equiv R_{n-1,m}$, thay vào (*) ta có đpcm:
+\begin{equation*}
+    R_{n,m} = mxR_{n-1,m-1} + R_{n-1,m}
+\end{equation*}
+
+
+\end{document}
