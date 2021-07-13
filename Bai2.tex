@@ -35,6 +35,24 @@ $$
 \a{n}=\a{n-1}+\a{n-5}+\a{n-10}
 $$
 
+\paragraph*{Tìm điều kiện đầu}
+\hphantom{1pt}\par 
+\begin{itemize}
+    \item Nếu $n<5$: chỉ có 1 cách là lấy $n$ tờ 1\$ nên 
+    $$
+    a_1 = a_2 = a_3 = a_4 = 1
+    $$
+    \item Nếu $5\le n < 10$: có 2 cách là lấy $n$ tờ 1\$ hoặc lấy 1 tờ 5\$ và (n-5) tờ 1\$.
+    $$
+    a_5=a_6=a_7=a_8=a_9=2
+    $$
+    \item Nếu $n = 10$: có 3 cách lấy là: 10 tờ 1\$, 2 tờ 5\$ và 1 tờ 10\$.
+    $$
+    a_{10}=3
+    $$
+    
+\end{itemize}
+
 \subsection{Câu c}
 - Gọi \a{n} là số chuỗi tam phân có độ dài $n$ mà không xuất hiện ``012''.\\
 - Ta xét 3 trường hợp sau:
