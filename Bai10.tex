@@ -155,10 +155,120 @@ Tiếp tục xét bàn cờ $(B_2)$ và lại bỏ đi 1 ô ở hàng đầu ti�
     R(B, x) = mxR(B', x) + R(B_m,x) \tag{*}
 \end{equation*}
 
-Theo giả thiết của đề bài, $R(B, x) \equiv R_{n,m}$; $R(B',x) \equiv R_{n-1,m-1}$ và $R(B_m,x) \equiv R_{n-1,m}$, thay vào (*) ta có đpcm:
+Theo giả thiết của đề bài, $R(B, x) \equiv R_{n,m}(x)$; $R(B',x) \equiv R_{n-1,m-1}(x)$ và $R(B_m,x) \equiv R_{n-1,m}(x)$, thay vào (*) ta có đpcm:
 \begin{equation*}
-    R_{n,m} = mxR_{n-1,m-1} + R_{n-1,m}
+    R_{n,m}(x) = mxR_{n-1,m-1}(x) + R_{n-1,m}(x)
 \end{equation*}
 
+\subsection{Câu b}
+
+\begin{figure}[H]
+    \newcommand{\0}{\textcolor{red}{0}}
+    \centering
+    \begin{minipage}{0.49\textwidth}
+        \centering
+        \begin{tikzpicture}
+        \matrix[matrix of nodes,nodes={draw=gray, anchor=center, minimum size=1cm}, column sep=-\pgflinewidth, row sep=-\pgflinewidth] (A) {
+            \empt & \empt & \empt & \empt \\
+            \empt & \empt & \empt & \empt \\
+            \empt & \empt & \empt & \empt \\
+            \empt & \empt & \empt & \empt \\
+            \empt & \empt & \empt & \empt \\};
+        
+            \draw[latex-latex] ([yshift=-0.5cm]A.south west) -- ([yshift=-0.5cm]A.south east) node[midway,fill=white] {m};
+            \draw[latex-latex] ([xshift=-0.5cm]A.south west) -- ([xshift=-0.5cm]A.north west) node[midway,fill=white] {n};
+        \end{tikzpicture} \\
+        $(B)$
+    \end{minipage}
+    \begin{minipage}{0.49\textwidth}
+        \centering
+        \begin{tikzpicture}
+        \matrix[matrix of nodes,nodes={draw=gray, anchor=center, minimum size=1cm}, column sep=-\pgflinewidth, row sep=-\pgflinewidth] (A) {
+            \empt & \empt & \empt & \\
+            \empt & \empt & \empt & \\
+            \empt & \empt & \empt & \\
+            \empt & \empt & \empt & \\};
+        
+            \draw[latex-latex] ([yshift=-0.5cm]A.south west) -- ([yshift=-0.5cm]A.south east) node[midway,fill=white] {m-1};
+            \draw[latex-latex] ([xshift=-0.5cm]A.south west) -- ([xshift=-0.5cm]A.north west) node[midway,fill=white] {n-1};
+        \end{tikzpicture} \\
+        $(B')$
+    \end{minipage}
+\end{figure}
+
+- Gọi bàn cờ có đa thức quân xe $R_{n,m}(x)$ là $(B)$ và bàn cờ có đa thức quân xe $R_{n-1,m-1}$ là $(B')$. \\
+- Để dễ chứng minh, giả sử $m \le n$ (nếu $m > n$ thì ta xoay bàn cờ $90^\text{o}$ để điều kiện trên được thoả, đa thức quân xe khi đó vẫn không thay đổi).
+
+\paragraph*{Tính R(B, x)}
+\hphantom{1pt}\par
+Ta xét $r_k(B)$.\\
+Để đặt $k$ quân xe lên bàn cờ $(B)$, ta có $C(n, k)$ cách chọn dòng. Với mỗi dòng, ta lại có $m(m-1)...(m-k)$ cách chọn cột nên ta có:
+$$
+\begin{aligned}
+r_k(B) &= {n\choose k}m(m-1)\dots(m-k) \\
+&= {n\choose k}\frac{m!}{(m-k)!}
+\end{aligned}
+$$
+
+Do ta chỉ có thể đặt tối đa $min(m,n)$ quân xe lên bàn cờ, mà $m\le n$ nên ta có:
+$$
+R(B, x) = \ssum{k=0}{m}{{n\choose k}\frac{m!}{(m-k!)}x^k}
+$$
+
+Lấy đạo hàm cả 2 vế, ta được:
+\begin{equation*}
+\begin{aligned}
+\deriv{R(B,x)} &= \deriv{\ssum{k=0}{m}{{n\choose k}\frac{m!}{(m-k!)}x^k}} \\
+&= \ssum{k=1}{m}{k{n\choose k}\frac{m!}{(m-k)!}x^{k-1}} \\
+& =\ssum{k=1}{m}{k\frac{m!n!}{(m-k)!(n-k)!k!}x^{k-1}} \\
+& =\ssum{k=1}{m}{\frac{m!n!}{(m-k)!(n-k)!(k-1)!}x^{k-1}} \\
+& =\ssum{k=1}{m}{\frac{m!n!}{(m-k)!(n-k)!(k-1)!}x^{k-1}} \quad \text{(1)}\\
+\end{aligned}
+\end{equation*}
+
+\paragraph*{Tính R(B', x)}
+\hphantom{1pt}\par 
+Lý luận tương tự như với bàn cờ (B), ta có:
+
+\begin{equation*}
+\begin{aligned}
+R(B',x) &=  \ssum{k=0}{m-1}{{n-1\choose k}\frac{(m-1)!}{(m-1-k!)}x^k} \\
+&= \ssum{k=0}{m-1}{\frac{(m-1)!(n-1)!}{(m-1-k)![(n-1-k)]!k!}x^{k}} \\
+&= \ssum{k=0}{m-1}{\frac{(m-1)!(n-1)!}{\left[m-(k+1)\right]![n-(k+1)]!k!}x^{k}}
+\end{aligned}
+\end{equation*}
+
+Nhân $nm$ vào cả 2 vế, ta được:
+\begin{equation*}
+\begin{aligned}
+nmR(B',x) &= \ssum{k=0}{m-1}{nm\frac{(m-1)!(n-1)!}{\left[m-(k+1)\right]![n-(k+1)]!k!}x^{k}}\\
+&= \ssum{k=0}{m-1}{\frac{m!n!}{\left[m-(k+1)\right]![n-(k+1)]!k!}x^{k}} \quad \text{(2)}
+\end{aligned}
+\end{equation*}
+
+Đặt $t = k + 1$, ta có:
+\begin{equation*}
+\begin{aligned}
+& 0 \le k \le m-1 \\
+\Ra &\ 1 \le t \le m
+\end{aligned}
+\end{equation*}
+
+Thay $k = t - 1$ vào (2), ta được:
+\begin{equation*}
+\begin{aligned}
+nmR(B',x) &= \ssum{t=1}{m}{\frac{m!n!}{(m-t)!(n-t)!(t-1)!}x^{t-1}} \quad \text{(3)}
+\end{aligned}
+\end{equation*}
+
+Trong (3), ta đổi biến $t$ trở lại thành $k$ ta sẽ thu được biểu thức (1).
+
+Vậy ta có:
+\begin{equation*}
+\begin{aligned}
+\deriv{R(B,x)} &=  nmR(B',x) \\
+\Ra\ \deriv{R_{n,m}(x)} &= nmR_{n-1,m-1}(x) \quad \text{(đpcm)}
+\end{aligned}
+\end{equation*}
 
 \end{document}
